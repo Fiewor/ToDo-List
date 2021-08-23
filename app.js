@@ -6,13 +6,14 @@ const items = ["Buy Food", "Cook Food", "Eat Food"]
 
 app.set('view engine', 'ejs')
 
+app.use(express.urlencoded({extended: true}))
+app.use(express.static("public"))
+
 let options = {
     weekday: 'long',
     day: 'numeric',
     month: 'long'
 }
-
-app.use(express.urlencoded({extended: true}))
 
 app.get('/', (req, res) => {
     let today = new Date()
@@ -22,7 +23,7 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
     item = req.body.newItem
-    newListItems.push(item)
+    items.push(item)
     res.redirect('/')
 })
 
