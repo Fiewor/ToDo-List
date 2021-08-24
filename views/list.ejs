@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="box" id="heading">
-        <h1><%= kindOfDay %></h1>
+        <h1><%= listTitle %></h1>
     </div>
 
     <div class="box">
@@ -19,11 +19,34 @@
             <p> <%= newListItems[i] %> </p>
             </div>
         <% } %>
+
+        <!-- newListItems.forEach(
+            <item =>
+            <li>item</li>
+        ) -->
+
         <form class="item" action="/" method="post">
             <input type="text" name="newItem" placeholder="New list item" autocomplete="off">
-            <button type="submit">+</button>
+            <button type="submit" name="list" value="<%= listTitle %> ">+</button>
         </form>
     </div>
 
+    <!-- 
+        <%# %> scriplet ejs tag(without the #) allows you to run basic JS code mainly for control flow(if/else) purposes.
+        It allows only this beacuse in most cases, you would want to keep your logic inside your server.
+        Should only be used in cases where you're changing something that's dificult to do inside the server,
+        or would be quicker to do inside the template
+    -->
+
+    <!-- <%# kindOfDay === "Friday" || kindOfDay === "Saturday" %>
+    ? <h1 style="color: blue;"><%#= kindOfDay %>ToDo List</h1>
+    : <h1 style="color: red;"><%#= kindOfDay %>ToDo List</h1> -->
+
+    <!-- <%# if(kindOfDay === "Friday" || kindOfDay === "Saturday"){ %>
+        <h1 style="color: blue;"><%#= kindOfDay %>ToDo List</h1>
+    <%# } else { %>
+        <h1 style="color: red;"><%#= kindOfDay %>ToDo List</h1>
+    <%# } %> -->
+    
 </body>
 </html>
